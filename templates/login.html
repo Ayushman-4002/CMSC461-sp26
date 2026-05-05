@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask Login Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+</head>
+<body>
+    <div class="scene">
+        <div class="orb orb-one"></div>
+        <div class="orb orb-two"></div>
+
+        <section class="login-card">
+            <span class="eyebrow">Welcome Back</span>
+            <h2>Login</h2>
+            <p class="subtitle">Sign in to access your dashboard, directory, and account tools.</p>
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+                <ul class="flash-messages">
+                {% for category, message in messages %}
+                  <li class="flash-message flash-{{ category }}">{{ message }}</li>
+                {% endfor %}
+                </ul>
+              {% endif %}
+            {% endwith %}
+
+            <form method="POST" action="/">
+                <div class="field">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                </div>
+
+                <div class="field">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+
+                <input type="submit" value="Login">
+            </form>
+
+            <p class="footer-copy">Secure access with a smoother first impression.</p>
+        </section>
+    </div>
+</body>
+</html>

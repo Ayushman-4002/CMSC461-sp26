@@ -1,0 +1,261 @@
+:root {
+    --bg-top: #081c2c;
+    --bg-bottom: #12324a;
+    --panel: rgba(9, 18, 31, 0.72);
+    --panel-border: rgba(255, 255, 255, 0.14);
+    --text: #f4f7fb;
+    --muted: #b9c5d4;
+    --accent: #7de2d1;
+    --accent-strong: #4cc9b0;
+    --field-bg: rgba(255, 255, 255, 0.08);
+    --field-border: rgba(255, 255, 255, 0.12);
+    --shadow: 0 30px 80px rgba(3, 10, 18, 0.35);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+    color: var(--text);
+    background:
+        radial-gradient(circle at top left, rgba(125, 226, 209, 0.18), transparent 30%),
+        linear-gradient(160deg, var(--bg-top), var(--bg-bottom));
+}
+
+.scene {
+    position: relative;
+    width: min(100%, 1100px);
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 32px 20px;
+    isolation: isolate;
+}
+
+.orb {
+    position: absolute;
+    border-radius: 999px;
+    filter: blur(6px);
+    opacity: 0.65;
+    z-index: -1;
+    animation: float 14s ease-in-out infinite;
+}
+
+.orb-one {
+    width: 320px;
+    height: 320px;
+    top: 6%;
+    left: -8%;
+    background: radial-gradient(circle, rgba(76, 201, 176, 0.7), rgba(76, 201, 176, 0));
+}
+
+.orb-two {
+    width: 280px;
+    height: 280px;
+    right: -6%;
+    bottom: 10%;
+    background: radial-gradient(circle, rgba(91, 155, 213, 0.72), rgba(91, 155, 213, 0));
+    animation-delay: -5s;
+}
+
+.login-card {
+    width: min(100%, 420px);
+    padding: 36px;
+    border: 1px solid var(--panel-border);
+    border-radius: 24px;
+    backdrop-filter: blur(18px);
+    background: var(--panel);
+    box-shadow: var(--shadow);
+    animation: card-enter 0.9s cubic-bezier(0.2, 0.9, 0.2, 1) both;
+}
+
+.eyebrow {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: rgba(125, 226, 209, 0.12);
+    color: var(--accent);
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    animation: fade-up 0.7s ease both;
+}
+
+h2 {
+    margin: 16px 0 10px;
+    font-size: clamp(2rem, 5vw, 2.6rem);
+    line-height: 1;
+    animation: fade-up 0.75s ease 0.08s both;
+}
+
+.subtitle {
+    margin: 0 0 24px;
+    color: var(--muted);
+    line-height: 1.5;
+    animation: fade-up 0.75s ease 0.16s both;
+}
+
+.flash-messages {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 0 18px;
+}
+
+.flash-message {
+    padding: 12px 14px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    animation: fade-up 0.7s ease both;
+}
+
+.flash-error {
+    background-color: rgba(248, 215, 218, 0.95);
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.flash-success {
+    background-color: rgba(212, 237, 218, 0.95);
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+form {
+    display: grid;
+    gap: 16px;
+}
+
+.field {
+    animation: fade-up 0.8s ease both;
+}
+
+.field:nth-of-type(1) {
+    animation-delay: 0.22s;
+}
+
+.field:nth-of-type(2) {
+    animation-delay: 0.3s;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid var(--field-border);
+    border-radius: 14px;
+    background: var(--field-bg);
+    color: var(--text);
+    font-size: 1rem;
+    transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+input[type="text"]::placeholder,
+input[type="password"]::placeholder {
+    color: rgba(244, 247, 251, 0.46);
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    outline: none;
+    transform: translateY(-2px);
+    border-color: rgba(125, 226, 209, 0.9);
+    box-shadow: 0 0 0 4px rgba(125, 226, 209, 0.12);
+    background: rgba(255, 255, 255, 0.12);
+}
+
+input[type="submit"] {
+    margin-top: 6px;
+    padding: 14px 18px;
+    border: 0;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+    color: #062130;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 16px 30px rgba(76, 201, 176, 0.24);
+    transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
+    animation: fade-up 0.8s ease 0.38s both;
+}
+
+input[type="submit"]:hover {
+    transform: translateY(-2px) scale(1.01);
+    box-shadow: 0 22px 40px rgba(76, 201, 176, 0.28);
+    filter: brightness(1.03);
+}
+
+input[type="submit"]:active {
+    transform: translateY(0);
+}
+
+.footer-copy {
+    margin-top: 16px;
+    color: var(--muted);
+    font-size: 0.92rem;
+    text-align: center;
+    animation: fade-up 0.8s ease 0.46s both;
+}
+
+@keyframes card-enter {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%,
+    100% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+    50% {
+        transform: translate3d(0, -18px, 0) scale(1.05);
+    }
+}
+
+@media (max-width: 600px) {
+    .login-card {
+        padding: 28px 22px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
